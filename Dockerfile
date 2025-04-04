@@ -1,18 +1,19 @@
-# Use official Python image
 FROM python:3.11
 
-# Set the working directory
+# Install system dependencies
+RUN apt-get update && apt-get install -y portaudio19-dev
+
+# Set working directory
 WORKDIR /app
 
-# Install required system dependencies
-RUN apt update && apt install -y portaudio19-dev
-
-# Copy the project files into the container
-COPY . /app/
+# Copy project files
+COPY . .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir Flask
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Set the default command
-CMD ["python", "app.py"]
+# Expose port (if needed for a web app)
+EXPOSE 8000
+
+# Command to run your app
+CMD ["python", "gradio_app.py"]
