@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediScan - AI-Powered Medical Image Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body class="light-theme">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">D</div>
+                <div class="logo-text">
+                    <h1>MediScan</h1>
+                    <p>AI-Powered Medical Analysis</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#upload">Analysis</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#for-doctors">For Doctors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content slide-in-left">
+                <h2>Advanced Medical Imaging Analysis with AI</h2>
+                <p>Upload your medical images and get instant AI-powered analysis to help with diagnoses, treatment planning, and patient communication.</p>
+                <div class="hero-buttons">
+                    <a href="#upload" class="btn primary">Start Analysis</a>
+                    <a href="#how-it-works" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image slide-in-right">
+                <img src="https://via.placeholder.com/600x400" alt="Medical AI Analysis">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <div class="section-header">
+                <h2>Medical Image Analysis</h2>
+                <p>Upload your medical images and get AI-powered analysis in seconds</p>
+            </div>
+            
+            <div class="upload-container">
+                <div class="upload-card">
+                    <h3><i class="fas fa-upload"></i> Upload Files</h3>
+                    <form id="analysisForm">
+                        <div class="form-group">
+                            <label for="patientName">Patient Name</label>
+                            <input type="text" id="patientName" placeholder="Enter patient name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientAge">Patient Age</label>
+                            <input type="number" id="patientAge" placeholder="Enter patient age">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="symptoms">Symptoms or Notes</label>
+                            <textarea id="symptoms" placeholder="Describe symptoms or add notes"></textarea>
+                        </div>
+                        
+                        <div class="voice-recorder">
+                            <p>Record notes instead of typing</p>
+                            <div class="recorder-ui">
+                                <button type="button" id="recordBtn" class="record-btn">
+                                    <i class="fas fa-microphone"></i> Start Recording
+                                </button>
+                                <div class="audio-controls">
+                                    <audio controls></audio>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag and drop your medical images here or click to browse</p>
+                            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                        </div>
+                        
+                        <div class="preview-container"></div>
+                        
+                        <button type="submit" id="analyzeBtn" class="btn primary full-width" disabled>
+                            <i class="fas fa-brain"></i> Analyze Images
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="results-card">
+                    <h3><i class="fas fa-chart-bar"></i> Analysis Results</h3>
+                    
+                    <div class="result-section">
+                        <h4>Diagnosis Prediction</h4>
+                        <p class="placeholder">Analysis results will appear here after processing</p>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h4>Confidence Score</h4>
+                        <p class="placeholder">Confidence metrics will be shown here</p>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h4>Recommendations</h4>
+                        <p class="placeholder">Professional recommendations will appear here</p>
+                    </div>
+                    
+                    <button class="btn secondary full-width" disabled>
+                        <i class="fas fa-download"></i> Download Report
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Analysis Result (appears after analysis) -->
+            <div class="analysis-result">
+                <div class="result-heading">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Analysis Complete</h3>
+                </div>
+                
+                <div class="result-details">
+                    <!-- Results will be dynamically added here -->
+                </div>
+                
+                <div class="report-actions">
+                    <button id="downloadReport" class="btn primary">
+                        <i class="fas fa-file-pdf"></i> Download PDF Report
+                    </button>
+                    <button id="emailReport" class="btn secondary">
+                        <i class="fas fa-envelope"></i> Email Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+                <!-- Top Card -->
+    
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Our advanced AI technology analyzes medical images with incredible accuracy</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3>Upload Images</h3>
+                    <p>Upload your medical images securely to our platform</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Analysis</h3>
+                    <p>Our advanced AI analyzes the images using deep learning technology</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Get Results</h3>
+                    <p>Receive detailed analysis with diagnostic suggestions</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>Generate Report</h3>
+                    <p>Download or share comprehensive medical reports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- For Doctors Section -->
+    <section class="for-doctors" id="for-doctors">
+        <div class="container">
+            <div class="section-header">
+                <h2>For Healthcare Professionals</h2>
+                <p>Enhance your diagnostic capabilities with AI assistance</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Save Time</h3>
+                    <p>Reduce diagnostic time by up to 60% with AI-powered analysis</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>Improve Accuracy</h3>
+                    <p>95% accuracy rate in identifying common conditions</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Access Knowledge</h3>
+                    <p>Trained on millions of medical images across specialties</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                    <h3>Patient Communication</h3>
+                    <p>Clear visualizations help explain conditions to patients</p>
+                </div>
+            </div>
+            
+            <div class="cta">
+                <h3>Ready to enhance your practice with AI?</h3>
+                <a href="#contact" class="btn primary">Schedule a Demo</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Doctors Say</h2>
+                <p>Trusted by healthcare professionals worldwide</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-image">
+                            <img src="https://via.placeholder.com/60x60" alt="Dr. Sarah Johnson">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <p>Radiologist</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>DoctorG has transformed my workflow. The AI analysis helps me catch details I might have missed and confirms my diagnoses with high accuracy.</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-image">
+                            <img src="https://via.placeholder.com/60x60" alt="Dr. Michael Chen">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Dr. Michael Chen</h4>
+                            <p>Neurologist</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>As a neurologist, I find the brain scan analysis incredibly helpful. The AI detects patterns I might overlook and provides a valuable second opinion.</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-image">
+                            <img src="https://via.placeholder.com/60x60" alt="Dr. Jessica Martinez">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Dr. Jessica Martinez</h4>
+                            <p>Cardiologist</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>DoctorG has revolutionized how I analyze cardiac imaging. The AI detects subtle abnormalities and helps me make more confident diagnoses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for more information or support</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our Office</h4>
+                            <p>123 Medical Tech Blvd, Mumbai, India 440006</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>mohitkasat83@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+91 9022508136</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">Your Email</label>
+                            <input type="email" id="contactEmail" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" placeholder="Enter subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" placeholder="Enter your message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn primary full-width">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest updates on medical AI technology</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">D</div>
+                    <div class="logo-text">
+                        <h2>MediScan</h2>
+                        <p>Advanced Medical Image Analysis</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#for-doctors">For Doctors</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>For educational purposes only • Not a substitute for professional medical advice</p>
+                <p>&copy; 2025 MediScan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
