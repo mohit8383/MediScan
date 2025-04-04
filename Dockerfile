@@ -16,4 +16,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 EXPOSE 8000
 
 # Command to run your app
-CMD ["python", "gradio_app.py"]
+CMD ["python", "app.py"]
